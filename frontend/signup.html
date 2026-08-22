@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up — Dayflow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+</head>
+<body>
+  <div class="auth-shell">
+    <section class="auth-visual">
+      <canvas id="flow-ring-canvas" class="auth-visual__scene"></canvas>
+      <p class="auth-visual__tagline">Every workday, perfectly aligned.</p>
+    </section>
+
+    <section class="auth-form-panel">
+      <form id="signup-form" class="auth-form">
+        <div class="auth-form__logo">Dayflow</div>
+        <h1>Create your account</h1>
+        <p class="text-muted">Note: in production, only Admin/HR create employee accounts — this form is for the first Admin signup.</p>
+
+        <div id="form-error" class="field-error" style="margin-bottom:12px;"></div>
+
+        <div class="field">
+          <label for="signup-name">Full Name</label>
+          <input type="text" id="signup-name" required placeholder="Jane Doe" />
+        </div>
+
+        <div class="field">
+          <label for="signup-email">Email</label>
+          <input type="email" id="signup-email" required placeholder="you@company.com" />
+        </div>
+
+        <div class="field">
+          <label for="signup-password">Password</label>
+          <input type="password" id="signup-password" required placeholder="At least 8 characters" />
+        </div>
+
+        <div class="field">
+          <label for="signup-confirm-password">Confirm Password</label>
+          <input type="password" id="signup-confirm-password" required placeholder="Repeat your password" />
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+
+        <p class="text-center mt-24">
+          Already have an account? <a href="index.html">Sign In</a>
+        </p>
+      </form>
+    </section>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="js/three-scene.js"></script>
+  <script src="js/particles-bg.js"></script>
+  <script src="js/3d-avatar.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => initSignInScene('flow-ring-canvas'));
+  </script>
+</body>
+</html>

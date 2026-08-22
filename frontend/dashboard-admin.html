@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — Dayflow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+</head>
+<body data-page="dashboard-admin">
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar__brand">
+        <div class="sidebar__brand-mark"></div>
+        <span class="sidebar__brand-name">Dayflow</span>
+      </div>
+      <nav class="sidebar__nav">
+        <a class="nav-link" href="dashboard-admin.html">👥 <span class="nav-label">Employees</span></a>
+        <a class="nav-link" href="attendance.html">🕒 <span class="nav-label">Attendance</span></a>
+        <a class="nav-link" href="leave.html">🌴 <span class="nav-label">Time Off</span></a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <div class="topbar">
+        <div>
+          <h1>For Admin &amp; HR Officer</h1>
+          <p class="text-muted">A snapshot of today across the whole team.</p>
+        </div>
+        <input class="topbar__search" type="search" placeholder="Search employees..." />
+        <div style="position:relative;">
+          <div id="user-avatar" class="employee-card__avatar" style="cursor:pointer;" data-user="initials"></div>
+          <div id="avatar-dropdown" class="card hidden" style="position:absolute;right:0;top:52px;min-width:160px;z-index:10;">
+            <a class="nav-link" href="profile.html">My Profile</a>
+            <button class="nav-link btn-block" style="text-align:left;background:none;border:none;cursor:pointer;" data-action="logout">Log Out</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-grid mt-24">
+        <div class="card">
+          <p class="text-muted" style="margin-bottom:4px;">Total Employees</p>
+          <h2 id="stat-total-employees">—</h2>
+        </div>
+        <div class="card">
+          <p class="text-muted" style="margin-bottom:4px;">Present Today</p>
+          <h2 id="stat-present-today">—</h2>
+        </div>
+        <div class="card">
+          <p class="text-muted" style="margin-bottom:4px;">Pending Leave Requests</p>
+          <h2 id="stat-pending-leave">—</h2>
+        </div>
+      </div>
+
+      <h3 class="mt-24">Employees</h3>
+      <div id="employee-card-grid" class="card-grid mt-24"></div>
+
+      <h3 class="mt-24">Pending Leave Approvals</h3>
+      <div id="pending-leave-list" class="card mt-24"></div>
+    </main>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/transitions.js"></script>
+  <script src="js/scroll-animations.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

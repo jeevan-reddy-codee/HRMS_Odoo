@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Time Off — Dayflow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+</head>
+<body data-page="leave">
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar__brand">
+        <div class="sidebar__brand-mark"></div>
+        <span class="sidebar__brand-name">Dayflow</span>
+      </div>
+      <nav class="sidebar__nav">
+        <a class="nav-link" href="dashboard-employee.html">🏠 <span class="nav-label">Home</span></a>
+        <a class="nav-link" href="profile.html">🙂 <span class="nav-label">Profile</span></a>
+        <a class="nav-link" href="attendance.html">🕒 <span class="nav-label">Attendance</span></a>
+        <a class="nav-link active" href="leave.html">🌴 <span class="nav-label">Time Off</span></a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <div class="topbar">
+        <div>
+          <h1>Time Off</h1>
+          <p class="text-muted">Employees see only their own requests; Admins/HR can review everyone's.</p>
+        </div>
+        <button class="btn btn-accent" onclick="openNewLeaveModal()">+ New Request</button>
+      </div>
+
+      <div class="card-grid mt-24">
+        <div class="card">
+          <p class="text-muted" style="margin-bottom:4px;">Paid Time Off</p>
+          <h3 id="paid-balance">— Days Available</h3>
+        </div>
+        <div class="card">
+          <p class="text-muted" style="margin-bottom:4px;">Sick Time Off</p>
+          <h3 id="sick-balance">— Days Available</h3>
+        </div>
+      </div>
+
+      <div class="card mt-24">
+        <table>
+          <thead>
+            <tr>
+              <th>Employee</th>
+              <th>Type</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="leave-table-body">
+            <tr><td colspan="6" class="text-muted">Loading...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <!-- New Leave Request modal -->
+  <div id="new-leave-modal" class="hidden" style="position:fixed;inset:0;background:rgba(23,27,52,0.4);display:flex;align-items:center;justify-content:center;z-index:100;">
+    <div class="modal-panel card" style="width:100%;max-width:420px;">
+      <div class="flex-between">
+        <h3>Time Off Type Request</h3>
+        <button onclick="closeNewLeaveModal()" style="border:none;background:none;font-size:1.2rem;cursor:pointer;">✕</button>
+      </div>
+
+      <form id="apply-leave-form">
+        <div id="leave-form-error" class="field-error"></div>
+
+        <div class="field">
+          <label for="leave-type">Time off Type</label>
+          <select id="leave-type" required>
+            <option value="paid">Paid Time Off</option>
+            <option value="sick">Sick Leave</option>
+            <option value="unpaid">Unpaid Leave</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="leave-start">Start Date</label>
+          <input type="date" id="leave-start" required />
+        </div>
+
+        <div class="field">
+          <label for="leave-end">End Date</label>
+          <input type="date" id="leave-end" required />
+        </div>
+
+        <div class="field">
+          <label for="leave-remarks">Remarks</label>
+          <textarea id="leave-remarks" rows="3" placeholder="Optional note (e.g. for sick leave certificate)"></textarea>
+        </div>
+
+        <div class="flex gap-8">
+          <button type="button" class="btn btn-ghost btn-block" onclick="closeNewLeaveModal()">Discard</button>
+          <button type="submit" class="btn btn-primary btn-block">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/transitions.js"></script>
+  <script src="js/leave.js"></script>
+</body>
+</html>

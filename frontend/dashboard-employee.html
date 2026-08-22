@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — Dayflow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+</head>
+<body data-page="dashboard-employee">
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar__brand">
+        <div class="sidebar__brand-mark"></div>
+        <span class="sidebar__brand-name">Dayflow</span>
+      </div>
+      <nav class="sidebar__nav">
+        <a class="nav-link" href="profile.html">🙂 <span class="nav-label">Profile</span></a>
+        <a class="nav-link" href="attendance.html">🕒 <span class="nav-label">Attendance</span></a>
+        <a class="nav-link" href="leave.html">🌴 <span class="nav-label">Leave Requests</span></a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <div class="topbar">
+        <div>
+          <h1>Welcome back, <span data-user="fullName">there</span></h1>
+          <p class="text-muted">Here's what's happening with your workday.</p>
+        </div>
+        <div style="position:relative;">
+          <div id="user-avatar" class="employee-card__avatar" style="cursor:pointer;" data-user="initials"></div>
+          <div id="avatar-dropdown" class="card hidden" style="position:absolute;right:0;top:52px;min-width:160px;z-index:10;">
+            <a class="nav-link" href="profile.html">My Profile</a>
+            <button class="nav-link btn-block" style="text-align:left;background:none;border:none;cursor:pointer;" data-action="logout">Log Out</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-grid mt-24">
+        <div class="card">
+          <p class="text-muted" style="margin-bottom:4px;">Today's Status</p>
+          <h2 id="today-status-badge" style="text-transform:capitalize;">—</h2>
+          <div class="flex gap-8 mt-24">
+            <button id="check-in-btn" class="btn btn-accent">Check In →</button>
+            <button id="check-out-btn" class="btn btn-primary hidden">Check Out →</button>
+          </div>
+        </div>
+
+        <a href="profile.html" class="card hoverable" style="text-decoration:none;color:inherit;">
+          <p class="text-muted" style="margin-bottom:4px;">Profile</p>
+          <h3>View &amp; edit your details</h3>
+        </a>
+
+        <a href="leave.html" class="card hoverable" style="text-decoration:none;color:inherit;">
+          <p class="text-muted" style="margin-bottom:4px;">Leave Requests</p>
+          <h3>Apply or check status</h3>
+        </a>
+      </div>
+
+      <h3 class="mt-24">Recent Leave Requests</h3>
+      <div id="recent-leave-list" class="card mt-24"></div>
+    </main>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/transitions.js"></script>
+  <script src="js/scroll-animations.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Payroll — Dayflow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+</head>
+<body data-page="payroll">
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar__brand">
+        <div class="sidebar__brand-mark"></div>
+        <span class="sidebar__brand-name">Dayflow</span>
+      </div>
+      <nav class="sidebar__nav">
+        <a class="nav-link" href="dashboard-employee.html">🏠 <span class="nav-label">Home</span></a>
+        <a class="nav-link" href="profile.html">🙂 <span class="nav-label">Profile</span></a>
+        <a class="nav-link" href="attendance.html">🕒 <span class="nav-label">Attendance</span></a>
+        <a class="nav-link" href="leave.html">🌴 <span class="nav-label">Time Off</span></a>
+        <a class="nav-link active" href="payroll.html">💰 <span class="nav-label">Payroll</span></a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <div class="topbar">
+        <div>
+          <h1>Payroll</h1>
+          <p class="text-muted">Salary breakdown — read-only for employees, editable for Admin/HR.</p>
+        </div>
+      </div>
+
+      <div id="payroll-empty-state" class="card hidden mt-24">
+        <p class="text-muted">No salary structure has been set up for this employee yet.</p>
+      </div>
+
+      <!-- Admin-only: set/update wage -->
+      <form id="update-wage-form" class="card hidden mt-24">
+        <h3>Update Monthly Wage</h3>
+        <p class="text-muted">All components below are auto-calculated from this figure.</p>
+        <div id="wage-form-error" class="field-error"></div>
+        <div class="flex gap-16" style="align-items:flex-end;">
+          <div class="field" style="flex:1;margin-bottom:0;">
+            <label for="input-monthly-wage">Monthly Wage (₹)</label>
+            <input type="number" id="input-monthly-wage" min="1" step="0.01" placeholder="e.g. 50000" required />
+          </div>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </form>
+
+      <div class="card-grid mt-24">
+        <div class="card">
+          <p class="text-muted" style="margin-bottom:4px;">Monthly Wage</p>
+          <h3 id="salary-monthly-wage" class="mono">—</h3>
+        </div>
+        <div class="card">
+          <p class="text-muted" style="margin-bottom:4px;">Yearly Wage</p>
+          <h3 id="salary-yearly-wage" class="mono">—</h3>
+        </div>
+        <div class="card" style="background:var(--success-soft);">
+          <p style="margin-bottom:4px;color:var(--success);">Net Pay (this month)</p>
+          <h3 id="salary-net-pay" class="mono" style="color:var(--success);">—</h3>
+        </div>
+      </div>
+
+      <h3 class="mt-24">Earnings Breakdown</h3>
+      <div class="card mt-24">
+        <table>
+          <tbody>
+            <tr><td>Basic Salary (50% of wage)</td><td id="salary-basic" class="mono">—</td></tr>
+            <tr><td>House Rent Allowance (50% of basic)</td><td id="salary-hra" class="mono">—</td></tr>
+            <tr><td>Standard Allowance</td><td id="salary-standard-allowance" class="mono">—</td></tr>
+            <tr><td>Performance Bonus</td><td id="salary-performance-bonus" class="mono">—</td></tr>
+            <tr><td>Leave Travel Allowance</td><td id="salary-lta" class="mono">—</td></tr>
+            <tr><td>Fixed Allowance (remainder)</td><td id="salary-fixed-allowance" class="mono">—</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="mt-24">Deductions</h3>
+      <div class="card mt-24">
+        <table>
+          <tbody>
+            <tr><td>Provident Fund — Employee (12% of basic)</td><td id="salary-pf-employee" class="mono">—</td></tr>
+            <tr><td>Provident Fund — Employer (12% of basic)</td><td id="salary-pf-employer" class="mono">—</td></tr>
+            <tr><td>Professional Tax</td><td id="salary-professional-tax" class="mono">—</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/transitions.js"></script>
+  <script src="js/payroll.js"></script>
+</body>
+</html>

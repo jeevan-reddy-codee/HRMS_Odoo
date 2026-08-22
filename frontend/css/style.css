@@ -1,0 +1,327 @@
+/* ============================================================
+   Dayflow HRMS — Design System
+   Theme: "Flow" — the day-cycle. Amber sunrise to indigo dusk.
+   Signature element: the animated 3D Flow Ring on the sign-in page.
+   ============================================================ */
+
+:root {
+  /* Color */
+  --ink: #171B34;              /* primary text */
+  --ink-soft: #4B4F72;         /* secondary text */
+  --base: #F6F7FB;             /* page background */
+  --surface: #FFFFFF;          /* card background */
+  --border: #E2E4EE;
+  --primary: #33418B;          /* deep flow-blue */
+  --primary-dark: #232E68;
+  --accent: #FF8C42;           /* amber sunrise */
+  --accent-soft: #FFE4CC;
+  --success: #3FAE68;
+  --success-soft: #DFF3E6;
+  --danger: #E15A5A;
+  --danger-soft: #FBE3E3;
+  --warning: #E0A82E;
+
+  /* Type */
+  --font-display: 'Space Grotesk', 'Segoe UI', sans-serif;
+  --font-body: 'Inter', 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+  /* Scale */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --shadow-sm: 0 1px 3px rgba(23, 27, 52, 0.06);
+  --shadow-md: 0 8px 24px rgba(23, 27, 52, 0.08);
+  --shadow-lg: 0 20px 48px rgba(23, 27, 52, 0.14);
+
+  --sidebar-w: 240px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--base);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--ink);
+  margin: 0 0 8px;
+  letter-spacing: -0.01em;
+}
+
+p { margin: 0 0 12px; color: var(--ink-soft); line-height: 1.55; }
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+button, input, select, textarea { font-family: inherit; }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ---------- Layout shells ---------- */
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: var(--sidebar-w);
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.sidebar__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 8px 24px;
+}
+
+.sidebar__brand-mark {
+  width: 34px; height: 34px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--accent), var(--primary));
+}
+
+.sidebar__brand-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  color: var(--ink-soft);
+  font-weight: 500;
+  font-size: 0.92rem;
+}
+
+.nav-link:hover { background: var(--base); text-decoration: none; }
+.nav-link.active { background: var(--primary); color: #fff; }
+
+.main-content {
+  flex: 1;
+  padding: 28px 36px 60px;
+  max-width: 1200px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.topbar__search {
+  flex: 1;
+  max-width: 320px;
+  margin: 0 24px;
+}
+
+/* ---------- Cards ---------- */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  border: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn:active { transform: translateY(1px); }
+
+.btn-primary { background: var(--primary); color: #fff; }
+.btn-primary:hover { background: var(--primary-dark); }
+
+.btn-accent { background: var(--accent); color: #fff; }
+.btn-accent:hover { box-shadow: var(--shadow-md); }
+
+.btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--border); }
+.btn-ghost:hover { background: var(--base); }
+
+.btn-danger { background: var(--danger-soft); color: var(--danger); }
+.btn-success { background: var(--success-soft); color: var(--success); }
+
+.btn-block { width: 100%; }
+
+/* ---------- Forms ---------- */
+.field { margin-bottom: 16px; }
+
+.field label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  margin-bottom: 6px;
+}
+
+.field input, .field select, .field textarea {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 0.94rem;
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.field input:focus, .field select:focus, .field textarea:focus {
+  border-color: var(--primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(51, 65, 139, 0.12);
+}
+
+.field-error { color: var(--danger); font-size: 0.8rem; margin-top: 4px; }
+
+/* ---------- Status pills / dots ---------- */
+.status-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.status-dot.present { background: var(--success); }
+.status-dot.absent { background: var(--warning); }
+.status-dot.leave { background: var(--primary); }
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+.pill-pending { background: #FFF3DC; color: var(--warning); }
+.pill-approved { background: var(--success-soft); color: var(--success); }
+.pill-rejected { background: var(--danger-soft); color: var(--danger); }
+
+/* ---------- Employee card ---------- */
+.employee-card {
+  position: relative;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 16px;
+}
+
+.employee-card__avatar {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-soft), var(--border));
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-weight: 700; color: var(--primary);
+}
+
+.employee-card__status {
+  position: absolute;
+  top: 12px; right: 12px;
+}
+
+/* ---------- Auth pages ---------- */
+.auth-shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.auth-visual {
+  background: linear-gradient(160deg, var(--primary-dark) 0%, var(--primary) 55%, var(--accent) 130%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  padding: 40px;
+}
+
+.auth-visual__scene {
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 1 / 1;
+}
+
+.auth-visual__tagline {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  text-align: center;
+  margin-top: 12px;
+  max-width: 340px;
+}
+
+.auth-form-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.auth-form {
+  width: 100%;
+  max-width: 380px;
+}
+
+.auth-form__logo {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.4rem;
+  margin-bottom: 6px;
+}
+
+/* ---------- Utility ---------- */
+.text-muted { color: var(--ink-soft); }
+.mt-24 { margin-top: 24px; }
+.flex { display: flex; }
+.flex-between { display: flex; align-items: center; justify-content: space-between; }
+.gap-8 { gap: 8px; }
+.gap-16 { gap: 16px; }
+.text-center { text-align: center; }
+.hidden { display: none !important; }
+
+.profile-tab.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 12px 10px; border-bottom: 1px solid var(--border); font-size: 0.88rem; }
+th { color: var(--ink-soft); font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; }
+td.mono, .mono { font-family: var(--font-mono); }

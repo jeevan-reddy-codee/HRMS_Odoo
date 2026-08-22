@@ -1,0 +1,63 @@
+/* ============================================================
+   Motion — page transitions, reveals, and micro-interactions.
+   Kept deliberately restrained: the 3D scene carries the "wow",
+   these are the quiet supporting motions.
+   ============================================================ */
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.page-enter {
+  animation: fadeInUp 0.45s ease both;
+}
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card {
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.card.hoverable:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.modal-backdrop {
+  animation: fadeIn 0.2s ease both;
+}
+.modal-panel {
+  animation: scaleIn 0.25s ease both;
+}
+
+.status-dot.present {
+  animation: pulseGreen 2s infinite;
+}
+@keyframes pulseGreen {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(63, 174, 104, 0.4); }
+  50% { box-shadow: 0 0 0 5px rgba(63, 174, 104, 0); }
+}
+
+.btn { transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease; }
+
+.toast {
+  animation: fadeInUp 0.3s ease both;
+}

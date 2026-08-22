@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Attendance — Dayflow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+</head>
+<body data-page="attendance">
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar__brand">
+        <div class="sidebar__brand-mark"></div>
+        <span class="sidebar__brand-name">Dayflow</span>
+      </div>
+      <nav class="sidebar__nav">
+        <a class="nav-link" href="dashboard-employee.html">🏠 <span class="nav-label">Home</span></a>
+        <a class="nav-link" href="profile.html">🙂 <span class="nav-label">Profile</span></a>
+        <a class="nav-link active" href="attendance.html">🕒 <span class="nav-label">Attendance</span></a>
+        <a class="nav-link" href="leave.html">🌴 <span class="nav-label">Time Off</span></a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <div class="topbar">
+        <div>
+          <h1>Attendance</h1>
+          <p class="text-muted">Check in, check out, and review your work hours.</p>
+        </div>
+        <div class="flex gap-8">
+          <button id="check-in-btn" class="btn btn-accent">Check In →</button>
+          <button id="check-out-btn" class="btn btn-primary hidden">Check Out →</button>
+        </div>
+      </div>
+
+      <div class="card mt-24">
+        <table>
+          <thead>
+            <tr>
+              <th id="col-1">Date</th>
+              <th>Check In</th>
+              <th>Check Out</th>
+              <th>Work Hours</th>
+              <th>Extra Hours</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="attendance-table-body">
+            <tr><td colspan="6" class="text-muted">Loading...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/transitions.js"></script>
+  <script src="js/attendance.js"></script>
+</body>
+</html>

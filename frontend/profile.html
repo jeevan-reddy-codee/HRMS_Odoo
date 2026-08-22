@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profile — Dayflow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+</head>
+<body data-page="profile">
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar__brand">
+        <div class="sidebar__brand-mark"></div>
+        <span class="sidebar__brand-name">Dayflow</span>
+      </div>
+      <nav class="sidebar__nav">
+        <a class="nav-link" href="dashboard-employee.html">🏠 <span class="nav-label">Home</span></a>
+        <a class="nav-link active" href="profile.html">🙂 <span class="nav-label">Profile</span></a>
+        <a class="nav-link" href="attendance.html">🕒 <span class="nav-label">Attendance</span></a>
+        <a class="nav-link" href="leave.html">🌴 <span class="nav-label">Time Off</span></a>
+        <a class="nav-link" href="payroll.html">💰 <span class="nav-label">Payroll</span></a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <div class="card flex gap-16" style="align-items:center;">
+        <div id="profile-avatar" class="employee-card__avatar" style="width:72px;height:72px;font-size:1.3rem;"></div>
+        <div style="flex:1;">
+          <h2 id="profile-name">—</h2>
+          <p class="text-muted" id="profile-position" style="margin:0;">—</p>
+        </div>
+        <button id="edit-profile-btn" class="btn btn-ghost hidden" onclick="openEditProfileModal()">Edit Profile</button>
+      </div>
+
+      <!-- Tabs -->
+      <div class="flex gap-8 mt-24">
+        <button class="profile-tab btn btn-ghost active" data-target="tab-basic">Basic Info</button>
+        <button class="profile-tab btn btn-ghost" data-target="tab-resume">Resume</button>
+        <button class="profile-tab btn btn-ghost" data-target="tab-private">Private Info</button>
+        <button id="tab-salary-trigger" class="profile-tab btn btn-ghost hidden" data-target="tab-salary">Salary Info</button>
+      </div>
+
+      <!-- Basic Info -->
+      <div id="tab-basic" class="profile-tab-panel card mt-24">
+        <div class="card-grid">
+          <div><p class="text-muted" style="margin-bottom:2px;">Login ID</p><p id="profile-login-id" class="mono">—</p></div>
+          <div><p class="text-muted" style="margin-bottom:2px;">Email</p><p id="profile-email">—</p></div>
+          <div><p class="text-muted" style="margin-bottom:2px;">Mobile</p><p id="profile-mobile">—</p></div>
+          <div><p class="text-muted" style="margin-bottom:2px;">Company</p><p id="profile-company">—</p></div>
+          <div><p class="text-muted" style="margin-bottom:2px;">Department</p><p id="profile-department">—</p></div>
+          <div><p class="text-muted" style="margin-bottom:2px;">Location</p><p id="profile-location">—</p></div>
+        </div>
+      </div>
+
+      <!-- Resume -->
+      <div id="tab-resume" class="profile-tab-panel card mt-24 hidden">
+        <h4>About</h4>
+        <p id="profile-about">—</p>
+        <h4>Skills</h4>
+        <p id="profile-skills">—</p>
+      </div>
+
+      <!-- Private Info -->
+      <div id="tab-private" class="profile-tab-panel card mt-24 hidden">
+        <div class="card-grid">
+          <div><p class="text-muted" style="margin-bottom:2px;">Account Number</p><p id="profile-account-number" class="mono">—</p></div>
+          <div><p class="text-muted" style="margin-bottom:2px;">Bank Name</p><p id="profile-bank-name">—</p></div>
+          <div><p class="text-muted" style="margin-bottom:2px;">IFSC Code</p><p id="profile-ifsc" class="mono">—</p></div>
+          <div><p class="text-muted" style="margin-bottom:2px;">PAN No.</p><p id="profile-pan" class="mono">—</p></div>
+        </div>
+      </div>
+
+      <!-- Salary Info (admin only) -->
+      <div id="tab-salary" class="profile-tab-panel card mt-24 hidden">
+        <p class="text-muted">Full salary breakdown is available on the <a href="payroll.html">Payroll page</a>.</p>
+      </div>
+    </main>
+  </div>
+
+  <!-- Edit Profile modal -->
+  <div id="edit-profile-modal" class="hidden" style="position:fixed;inset:0;background:rgba(23,27,52,0.4);display:flex;align-items:center;justify-content:center;z-index:100;">
+    <div class="modal-panel card" style="width:100%;max-width:420px;">
+      <div class="flex-between">
+        <h3>Edit Profile</h3>
+        <button onclick="closeEditProfileModal()" style="border:none;background:none;font-size:1.2rem;cursor:pointer;">✕</button>
+      </div>
+      <form id="edit-profile-form">
+        <div class="field">
+          <label for="input-phone">Phone</label>
+          <input type="tel" id="input-phone" placeholder="9876543210" />
+        </div>
+        <div class="field">
+          <label for="input-address">Address</label>
+          <textarea id="input-address" rows="3" placeholder="Street, City, State"></textarea>
+        </div>
+        <div class="flex gap-8">
+          <button type="button" class="btn btn-ghost btn-block" onclick="closeEditProfileModal()">Cancel</button>
+          <button type="submit" class="btn btn-primary btn-block">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/transitions.js"></script>
+  <script src="js/profile.js"></script>
+</body>
+</html>
