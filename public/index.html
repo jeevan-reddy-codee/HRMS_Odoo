@@ -17,7 +17,7 @@
 
                 data.forEach(employee => {
                     const p = document.createElement("p");
-                    p.textContent = `${employee.id} - ${employee.name} - ${employee.email} - ${employee.department}`;
+                    p.textContent = `${employee.id} - ${employee.full_name} - ${employee.phone} - ${employee.department}`;
                     container.appendChild(p);
                 });
             });
