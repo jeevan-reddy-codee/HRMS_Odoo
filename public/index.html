@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HRMS Employees</title>
+</head>
+<body>
+
+    <h1>Employees</h1>
+
+    <div id="employees"></div>
+
+    <script>
+        fetch("/api/employees")
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById("employees");
+
+                data.forEach(employee => {
+                    const p = document.createElement("p");
+                    p.textContent = `${employee.id} - ${employee.name} - ${employee.email} - ${employee.department}`;
+                    container.appendChild(p);
+                });
+            });
+    </script>
+
+</body>
+</html>
